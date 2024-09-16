@@ -1,4 +1,4 @@
-package com.ecab;
+package com.ecab.controller;
 
 import com.ecab.controller.RideRequestController;
 import com.ecab.model.RideRequest;

@@ -44,18 +44,28 @@ public class DispatchService {
     }
 
 //    public Driver findNearestDriver(double lat, double lon) {
-//        // Create a point with passenger location
-//        Point passengerLocation = new Point(lat, lon);
+//        GeoJsonPoint passengerLocation = new GeoJsonPoint(lon, lat);
 //
-//        // Create a query to find the nearest driver who is available
 //        Query query = new Query();
 //        query.addCriteria(Criteria
-//                        .where("location").nearSphere(passengerLocation) // NearSphere for geospatial queries
-//                        .maxDistance(5 / 6378.1)) // Maximum distance in radians (5 km converted to radians)
-//                .addCriteria(Criteria.where("available").is(true)); // Only look for available drivers
+//                        .where("location").nearSphere(passengerLocation)
+//                        .maxDistance(10 / 6378.1))
+//                .addCriteria(Criteria.where("available").is(true));
 //
-//        // Fetch the nearest driver using MongoTemplate
-//        return mongoTemplate.findOne(query, Driver.class);
+////        logger.info("Query for finding drivers: {}", query);
+//
+//        List<Driver> drivers = mongoTemplate.find(query, Driver.class);
+//
+//        if (drivers.isEmpty()) {
+//            System.out.println("No drivers");
+////            logger.info("No drivers found.");
+////            return null;
+//        } else {
+//            drivers.forEach(driver -> System.out.println("driver found" + driver.getDriverId()));
+////                    logger.info("Driver found: {}", driver.getDriverId()));
+//        }
+//
+//        return drivers.get(0); // Return the first driver found
 //    }
 
     public Driver findNearestDriver(double lat, double lon) {
@@ -71,11 +81,11 @@ public class DispatchService {
         List<Driver> drivers = mongoTemplate.find(query, Driver.class);
 
         // Debugging: Print drivers found
-//        if (drivers.isEmpty()) {
-//            System.out.println("No drivers found.");
-//        } else {
-//            drivers.forEach(driver -> System.out.println("Driver found: " + driver.getDriverId()));
-//        }
+        if (drivers.isEmpty()) {
+            System.out.println("No drivers found.");
+        } else {
+            drivers.forEach(driver -> System.out.println("Driver found: " + driver.getDriverId()));
+        }
 
         return mongoTemplate.findOne(query, Driver.class);
     }

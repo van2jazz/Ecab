@@ -1,4 +1,4 @@
-package com.ecab;
+package com.ecab.config;
 
 import com.ecab.config.RabbitMQConfig;
 import org.junit.jupiter.api.Test;
