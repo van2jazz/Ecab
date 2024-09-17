@@ -18,11 +18,16 @@ public class DriverDataInitializer {
     @Bean
     public CommandLineRunner init(MongoTemplate mongoTemplate) {
         return args -> {
-            mongoTemplate.save(new Driver("driver1", new GeoJsonPoint(-73.935242, 40.730610), true));
-            mongoTemplate.save(new Driver("driver2", new GeoJsonPoint(-74.0060, 40.7128), true));
-            mongoTemplate.save(new Driver("driver3", new GeoJsonPoint(-73.935242, 40.730614), false));
-            mongoTemplate.save(new Driver("driver4", new GeoJsonPoint(-74.0050, 40.7458), false));
-            // Add more drivers
+            logger.info("Initializing driver data...");
+            try {
+                mongoTemplate.save(new Driver("driver1", new GeoJsonPoint(-73.935242, 40.730610), true));
+                mongoTemplate.save(new Driver("driver2", new GeoJsonPoint(-74.0060, 40.7128), true));
+                mongoTemplate.save(new Driver("driver3", new GeoJsonPoint(-73.935242, 40.730614), false));
+                mongoTemplate.save(new Driver("driver4", new GeoJsonPoint(-74.0050, 40.7458), false));
+                logger.info("Driver data initialization completed successfully.");
+            } catch (Exception e) {
+                logger.error("Error initializing driver data: {}", e.getMessage(), e);
+            }
         };
     }
 }

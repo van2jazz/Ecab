@@ -13,7 +13,6 @@ public class Driver {
 
     private static final Logger logger = LoggerFactory.getLogger(Driver.class);
 
-
     @Id
     private String id;
     private String driverId;

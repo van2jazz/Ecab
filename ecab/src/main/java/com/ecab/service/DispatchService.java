@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -60,6 +61,7 @@ public class DispatchService {
 //        return mongoTemplate.findOne(query, Driver.class);
 //    }
 
+//    @Cacheable(value = "nearestDriverCache", key = "#lat + ',' + #lon")
     public Driver findNearestDriver(double lat, double lon) {
         try {
             GeoJsonPoint passengerLocation = new GeoJsonPoint(lon, lat);
@@ -115,6 +117,7 @@ public class DispatchService {
     }
 
     //recheck this method //allowed
+    @Cacheable(value = "rideResultCache", key = "#passengerId")
     public RideResult getRideResult(String passengerId) {
         try {
             return rideResultRepository.findById(passengerId)
