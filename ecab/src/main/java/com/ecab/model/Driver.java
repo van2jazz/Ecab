@@ -1,5 +1,7 @@
 package com.ecab.model;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexType;
@@ -8,6 +10,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "drivers")
 public class Driver {
+
+    private static final Logger logger = LoggerFactory.getLogger(Driver.class);
+
 
     @Id
     private String id;

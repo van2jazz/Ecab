@@ -1,11 +1,16 @@
 package com.ecab.model;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.annotation.Id;
 
 import java.io.Serial;
 import java.io.Serializable;
 
 public class RideRequest implements Serializable {
+
+    private static final Logger logger = LoggerFactory.getLogger(RideRequest.class);
+
     @Serial
     private static final long serialVersionUID = 1L;
 

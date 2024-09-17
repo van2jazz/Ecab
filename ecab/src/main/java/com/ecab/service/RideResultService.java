@@ -2,6 +2,8 @@ package com.ecab.service;
 
 import com.ecab.model.RideResult;
 import com.ecab.repository.RideResultRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Service
 public class RideResultService {
+
+    private static final Logger logger = LoggerFactory.getLogger(RideResultService.class);
 
     @Autowired
     private MongoTemplate mongoTemplate;

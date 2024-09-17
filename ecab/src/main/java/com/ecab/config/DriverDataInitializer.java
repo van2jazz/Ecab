@@ -1,6 +1,8 @@
 package com.ecab.config;
 
 import com.ecab.model.Driver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -9,6 +11,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DriverDataInitializer {
+
+    private static final Logger logger = LoggerFactory.getLogger(DriverDataInitializer.class);
+
 
     @Bean
     public CommandLineRunner init(MongoTemplate mongoTemplate) {
