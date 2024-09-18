@@ -41,8 +41,9 @@ public class DispatchService {
         saveRideResult(rideRequest, nearestDriver);
     }
 
-    ////    @Cacheable(value = "nearestDriverCache", key = "#lat + ',' + #lon")
+        @Cacheable(value = "nearestDriverCache", key = "#lat + ',' + #lon")
     public Driver findNearestDriver(double lat, double lon) {
+            System.out.println("inside find nearst driver" + lat + lon);
         GeoJsonPoint passengerLocation = new GeoJsonPoint(lon, lat);
 
         Query query = new Query()
@@ -54,6 +55,7 @@ public class DispatchService {
         logger.info("Executing query to find nearest driver: {}", query);
 
         try {
+            System.out.println("enter the try blockk");
             List<Driver> drivers = mongoTemplate.find(query, Driver.class);
 
             if (drivers.isEmpty()) {
@@ -78,6 +80,7 @@ public class DispatchService {
         );
 
         try {
+            System.out.println("Calling safe endpoint");
             return rideResultRepository.save(rideResult);
         } catch (Exception e) {
             logger.error("Error saving RideResult: {}", e.getMessage(), e);
@@ -86,14 +89,14 @@ public class DispatchService {
         }
     }
 
-    @Cacheable(value = "rideResultCache", key = "#passengerId")
+//    @Cacheable(value = "rideResultCache", key = "#passengerId")
     public RideResult getRideResult(String passengerId) {
         try {
             return rideResultRepository.findById(passengerId)
                     .orElseThrow(() -> new RuntimeException("Ride result not found"));
         } catch (Exception e) {
             logger.error("Error fetching ride result for passenger {}: {}", passengerId, e.getMessage(), e);
-            return null;  // Consider throwing a custom exception or handling it as needed
+            throw new RuntimeException("Error fetching ride result", e);
         }
     }
 }

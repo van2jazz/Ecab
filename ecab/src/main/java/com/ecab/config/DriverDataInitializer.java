@@ -17,9 +17,12 @@ public class DriverDataInitializer {
 
     @Bean
     public CommandLineRunner init(MongoTemplate mongoTemplate) {
+
+
         return args -> {
             logger.info("Initializing driver data...");
             try {
+//                mongoTemplate.dropCollection("drivers");
                 mongoTemplate.save(new Driver("driver1", new GeoJsonPoint(-73.935242, 40.730610), true));
                 mongoTemplate.save(new Driver("driver2", new GeoJsonPoint(-74.0060, 40.7128), true));
                 mongoTemplate.save(new Driver("driver3", new GeoJsonPoint(-73.935242, 40.730614), false));
