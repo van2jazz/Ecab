@@ -46,7 +46,7 @@ MongoDB is used to store data for drivers and ride requests.
 
 + For a local MongoDB instance, make sure MongoDB is running on the default port (27017). You can check the driver data using MongoDB Compass.
 ## Interacting with RabbitMQ
-To use RabbitMQ, run the following Docker command to start a RabbitMQ instance with terminal:
+To use RabbitMQ, run the following Docker command to start a RabbitMQ instance in terminal:
 
 ```bash
 docker run --rm -it -p 15672:15672 -p 5672:5672 rabbitmq:3-management
