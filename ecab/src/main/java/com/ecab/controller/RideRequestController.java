@@ -59,18 +59,13 @@ import java.util.Map;
             @ApiResponse(responseCode = "404", description = "Ride result not found"),
             @ApiResponse(responseCode = "500", description = "Error fetching ride result")
     })
+
     @GetMapping("/{passengerId}")
     public ResponseEntity<?> getRideResult(
             @Parameter(description = "Passenger ID", required = true)
             @PathVariable String passengerId) {
-        logger.info("Fetching ride result for passengerId: {}", passengerId);
-
         try {
             RideResult rideResult = dispatchService.getRideResult(passengerId);
-
-            if (rideResult == null) {
-                return buildResponse(HttpStatus.NOT_FOUND, "Ride result not found for ID: " + passengerId);
-            }
             logger.info("Ride result for passengerId {} found.", passengerId);
             return ResponseEntity.ok(rideResult);
 
