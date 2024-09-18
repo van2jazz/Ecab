@@ -16,7 +16,6 @@ Make sure you have the following tools installed:
 
 + Java 17+
 + Maven 3.6+
-+ Docker (for RabbitMQ)
 + MongoDB
 + RabbitMQ (via Docker)
 + Redis Cache
