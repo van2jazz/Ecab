@@ -1,15 +1,10 @@
 package com.ecab.model;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "rideResults")
 public class RideResult {
-
-    private static final Logger logger = LoggerFactory.getLogger(RideResult.class);
-
 
     @Id
     private String passengerId;
