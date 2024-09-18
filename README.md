@@ -57,7 +57,7 @@ docker run --rm -it -p 15672:15672 -p 5672:5672 rabbitmq:3-management
 + Password: `guest`
 + The default port 5672 is for messaging.
 
-###Sending a Ride Request to RabbitMQ
+Sending a Ride Request to RabbitMQ
 
 Once RabbitMQ is running, you can use the 
 `/api/rides/request` endpoint to send ride requests, which will be handled by RabbitMQ.
