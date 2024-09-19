@@ -10,10 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.amqp.core.Queue;
 
-
-
 @Configuration
-public class RabbitMQConfiguration {
+public class RabbitMQConfig {
 
 
     @Value("${spring.rabbitmq.username}")
@@ -47,10 +45,9 @@ public class RabbitMQConfiguration {
     }
 
     static final String QUEUE_NAME = "rideRequests";
+
     @Bean
     public Queue rideRequestsQueue() {
         return new Queue("rideRequests", true);
     }
-
-
 }

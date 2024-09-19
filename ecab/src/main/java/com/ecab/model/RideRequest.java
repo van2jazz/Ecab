@@ -3,13 +3,9 @@ package com.ecab.model;
 
 import org.springframework.data.annotation.Id;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 public class RideRequest implements Serializable {
-
-    @Serial
-    private static final long serialVersionUID = 1L;
 
     @Id
     private String passengerId;

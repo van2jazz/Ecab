@@ -1,5 +1,6 @@
 package ecab;
 
+import com.ecab.EcabApplication;
 import com.ecab.model.RideRequest;
 import com.ecab.model.RideResult;
 import com.ecab.service.DispatchService;
@@ -22,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@SpringBootTest
+@SpringBootTest(classes = EcabApplication.class)
 public class RideRequestControllerIntegrationTest {
 
     @Autowired
@@ -73,7 +74,6 @@ public class RideRequestControllerIntegrationTest {
                 .andExpect(jsonPath("$.message").value("Failed to submit ride request. Please try again."));
     }
 
-
     @Test
     public void testGetRideResultSuccess() throws Exception {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
@@ -89,5 +89,4 @@ public class RideRequestControllerIntegrationTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.passengerId").value("12345"));
     }
-
 }

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.data.mongodb.core.MongoTemplate;
+
 public class DriverDataInitializerTest {
 
     @Test
@@ -16,7 +17,6 @@ public class DriverDataInitializerTest {
 
         runner.run();
 
-        // Verify that MongoTemplate's save method is called with drivers
         Mockito.verify(mongoTemplate, Mockito.times(4)).save(Mockito.any(Driver.class));
     }
 }
